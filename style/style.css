@@ -1,0 +1,65 @@
+@import url(../style/cores.css);
+@import url(../style/finalizadores.css);
+@import url(../style/botoes.css);
+@import url(../style/mostrar.css);
+@import url(../style/valores.css);
+
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: bisque;
+    padding: 20px; 
+}
+
+#qtd{
+    display: block;
+    height: 40px;
+    width: 200px;
+    margin: 16px 0;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+#qtd-desconto{
+    display: inline-block;
+    font-weight: 700;
+    margin-left: 20px;
+    font-size: 24px;
+}
+
+
+.picole-flex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: flex-start;
+}
+
+
+.grid-produtos{
+    display: grid;
+    grid-template-columns: auto 320px;
+    gap: 16px;
+    place-content: center;
+}
+
+.ativo{
+    display: grid;
+    opacity: 1;
+    transform: translateY(30px);
+    transition: 0.1s;
+}
+
+.virarAtacado{
+    
+}
+
+@media(max-width:900px) {
+    .finalizador{
+        left: 15vw;
+    }
+}
