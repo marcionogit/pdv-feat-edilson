@@ -30,24 +30,20 @@ function mudarConteudo(novoTexto){
   
   conteudoAntigo.innerHTML = conteudoNovo.innerHTML;
   
-  const btnClicado = document.querySelectorAll('.btn-escolha');
   
+  const btnClicado = document.querySelectorAll('.btn-escolha')
   btnClicado.forEach((item)=>{
     item.addEventListener('click', ()=>{
-      let nomeProduto = item.getAttribute('name');
-      let produto = mapaProdutos[nomeProduto];
-
-          produto.qtd = Number(quantidade.value);
-          if(produto.qtd === 0){
-              produto.qtd = 1;
-          }
-          const copiaproduto = Object.assign({}, produto);
-          lista.push(copiaproduto);
-          let mult = copiaproduto.qtd * copiaproduto.valor
-          let multAtacado = copiaproduto.qtd * copiaproduto.valorAtacado;
-          precoAtualizado.push(Number(mult))
-          precoAtualizadoAtacado.push(Number(multAtacado))
-          mostrarLista()
+      let idProduto = item.getAttribute('value');
+  
+      const url = `http://localhost:8080/products/${idProduto}`;
+      
+      fetch(url).then(response =>{
+        return response.json();
+          }).then(data =>
+          { console.log(data)
+      })
+      
     })
   })
 
