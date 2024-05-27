@@ -34,16 +34,9 @@ function mudarConteudo(novoTexto){
   const btnClicado = document.querySelectorAll('.btn-escolha')
   btnClicado.forEach((item)=>{
     item.addEventListener('click', ()=>{
-      let idProduto = item.getAttribute('value');
+      let idProduct = item.getAttribute('value');
   
-      const url = `http://localhost:8080/products/${idProduto}`;
-      
-      fetch(url).then(response =>{
-        return response.json();
-          }).then(data =>
-          { console.log(data)
-      })
-      
+      findApi(idProduct)    
     })
   })
 

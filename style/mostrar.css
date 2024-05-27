@@ -21,9 +21,8 @@
 }
 
 .mostrar-cabecalho{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  text-align: start;
+  display: flex;
+  justify-content: space-between;
   gap: 0px;
   font-weight: bold;
   padding: 8px;
@@ -33,4 +32,9 @@
 .mostrar-vendas-salvas{
   background-color: #fff;
   opacity: 0;
+}
+
+.index-excluir{
+  display: flex;
+  justify-content: space-between;
 }

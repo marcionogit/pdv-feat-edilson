@@ -100,7 +100,7 @@ function ativarBotaoAtacado(){
             preco.innerHTML = `R$ ${somaSorvetesAtacado.toFixed(2)}`
             desconto.innerHTML = `R$ ${descontoCompra.toFixed(2)}`
 
-            qtdDesconto.innerHTML = `DE:${somaSorvetesVarejo.toFixed(2)} POR:R$${somaSorvetesAtacado.toFixed(2)}`
+            qtdDesconto.innerHTML = `DE:${(somaSorvetesVarejo + descontoCompra).toFixed(2)} POR:R$${somaSorvetesAtacado.toFixed(2)}`
         } 
     } else{
         console.log('nenhum item selecionado')
@@ -152,12 +152,14 @@ btnAtacado.addEventListener('click', ativarBotaoAtacado)
             let multAtacado = item.quantityProduct * item.priceWholeSaleProduct      
 
             if(somaSorvetesVarejo < 40){
-                let formatado = `<li value="${index}" class="index-excluir" > ${item.nameProduct}
-                ${item.priceProduct} x ${item.quantityProduct} und. <strong>R$ ${mult.toFixed(2)}</strong></li>` 
+                let formatado = `<li value="${index}" class="index-excluir">
+                                    <p> ${item.nameProduct} ${precoAtualizado[index].toFixed(2)} x ${item.quantityProduct} und.</p> 
+                                    <p><strong>R$ ${item.priceProduct.toFixed(2)}</strong></p>
+                                 </li>` 
                 mostrarHTML.innerHTML += formatado;    
             } 
             else{
-                let formatado = `<li value="${index}" class="index-excluir" > ${item.nameProduct} ${item.priceWholeSaleProduct} x ${item.quantityProduct} und. <strong>R$ ${multAtacado.toFixed(2)}</strong></li>` 
+                let formatado = `<li value="${index}" class="index-excluir" > ${item.nameProduct} ${precoAtualizadoAtacado[index].toFixed(2)} x ${item.quantityProduct} und. <strong>R$ ${item.priceWholeSaleProduct.toFixed(2)}</strong></li>` 
                 mostrarHTML.innerHTML += formatado; 
 
                 qtdDesconto.innerHTML = `DE:${somaSorvetesVarejo.toFixed(2)} POR:R$${somaSorvetesAtacado.toFixed(2)} `

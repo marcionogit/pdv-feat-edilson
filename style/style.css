@@ -42,8 +42,8 @@ body{
 
 .grid-produtos{
     display: grid;
-    grid-template-columns: auto 320px;
-    gap: 16px;
+    grid-template-columns: auto 370px;
+    gap: 8px;
     place-content: center;
 }
 
@@ -54,9 +54,6 @@ body{
     transition: 0.1s;
 }
 
-.virarAtacado{
-    
-}
 
 @media(max-width:900px) {
     .finalizador{

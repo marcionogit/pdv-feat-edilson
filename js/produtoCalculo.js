@@ -7,7 +7,6 @@ async function findApi(idProduct) {
     quantidade.value = 1;
   }
   
-  
   const nameProduct = product.name;
   const priceProduct = +product.price * +quantidade.value;
   const priceWholeSaleProduct = +product.wholesaleprice * +quantidade.value;
@@ -34,8 +33,6 @@ async function findApi(idProduct) {
   if(somaSorvetesVarejo < 40){
     preco.innerHTML = `R$ ${somaSorvetesVarejo.toFixed(2)}`
     desconto.innerHTML = `R$ 0.00`
-
-
   } else{
       preco.innerHTML = `R$ ${somaSorvetesAtacado.toFixed(2)}`
       desconto.innerHTML = `R$ ${descontoCompra.toFixed(2)}`
@@ -44,6 +41,7 @@ async function findApi(idProduct) {
 
 
 const btnClicado = document.querySelectorAll('.btn-escolha');
+
 btnClicado.forEach((item)=>{
   item.addEventListener('click', ()=>{
     let idProduct = item.getAttribute('value');
