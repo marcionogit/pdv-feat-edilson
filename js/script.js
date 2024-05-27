@@ -2,6 +2,7 @@
 let lista = [];
 
 // precoAtualizado = [] e precoAtualizadoAtacado = []; arrays onde os resultados das multiplicações feitas serão armazenadas, para que no final consigamos soma-las para saber o total da compra.
+let descricaoProdutos = []
 let precoAtualizado = []
 let precoAtualizadoAtacado = []
 
@@ -23,16 +24,16 @@ let qtdDesconto = document.querySelector('#qtd-desconto');
 let btnAtacado = document.querySelector('#btn-atacado');
 
 // // .finalizadores = campo para finalizar a compra, por padrão ela será display="none"; Ao ser acionada será adicionada a class="ativo" que mudará o display para "grid".
-// const finalizadores = document.querySelector('.finalizador');
+const finalizadores = document.querySelector('.finalizador');
 
 // // #btnConfirmar = botão para quando todos os itens forem registrados, o usuário clicará neste botão para aparecer os finalizadores: DINHEIRO, DEBITO OU CRÉDITO.
-// const btnConfirmar = document.querySelector('#btn-confirmar');
+const btnConfirmar = document.querySelector('#btn-confirmar');
 
 // // #mostrarTroco = campo onde será exibido o valor de troco para o cliente.
-// const mostrarTroco = document.querySelector('#mostrarTroco');
+const mostrarTroco = document.querySelector('#mostrarTroco');
 
 // // #excluir-item = botão para excluir item unico durante uma compra.
-// const botaoExcluir = document.querySelector('#excluir-item');
+const botaoExcluir = document.querySelector('#excluir-item');
 
 
 
@@ -81,6 +82,7 @@ function ativarBotaoAtacado(){
         desativarBotaoAtacado()
         somaSorvetesVarejo = somaSorvetesVarejo
         desconto.innerHTML = `R$ 0.00`
+        qtdDesconto.innerHTML = ``
     } 
     else if(lista.length > 0){
         btnAtacado.classList.toggle('virarAtacado');
@@ -93,8 +95,8 @@ function ativarBotaoAtacado(){
             calculoAtualizado();
             
             lista.forEach((item, index)=>{        
-                let multAtacado = item.quantityProduct * item.priceWholeSaleProduct
-                let formatado = `<li value="${index}" class="index-excluir" > ${item.nameProduct} ${item.priceWholeSaleProduct} x ${item.quantityProduct} und.  <strong>R$ ${multAtacado.toFixed(2)}</strong></li>` 
+                
+                let formatado = `<li value="${index}" class="index-excluir" > ${item.nameProduct} ${precoAtualizadoAtacado[index].toFixed(2)} x ${item.quantityProduct} und.  <strong>R$ ${item.priceWholeSaleProduct.toFixed(2)}</strong></li>` 
                 mostrarHTML.innerHTML += formatado;
             })
             preco.innerHTML = `R$ ${somaSorvetesAtacado.toFixed(2)}`
@@ -110,12 +112,12 @@ function ativarBotaoAtacado(){
 
 btnAtacado.addEventListener('click', ativarBotaoAtacado)
 
-// function excluirItemLista(value){
-//     lista.splice(value, 1);
-//     precoAtualizado.splice(value, 1);
-//     precoAtualizadoAtacado.splice(value, 1);
-//     mostrarLista();
-// }
+function excluirItemLista(value){
+    lista.splice(value, 1);
+    precoAtualizado.splice(value, 1);
+    precoAtualizadoAtacado.splice(value, 1);
+    mostrarLista();
+}
 
 
 // // limparCampoQtd() = quando essa função for chamada, ela sempre limpará o campo de input #qtd.
@@ -125,14 +127,15 @@ btnAtacado.addEventListener('click', ativarBotaoAtacado)
 
 
 // // limparCampoBotao() = quando o botão Deletar for clicado, acionará essa função e sempre limpará os campos mostrar, preco e as arrays lista=[], e precoAtualizado.
-// function limparCampoBotao(){
-    //     limparCampoMostrar();
-    //     lista = [];
-    //     precoAtualizado = [];
-    //     precoAtualizadoAtacado = [];
-    //     preco.innerHTML = `R$ 0.00`
-    //     desconto.innerHTML = `R$ 0.00`
-    // }
+function limparCampoBotao(){
+        limparCampoMostrar();
+        lista = [];
+        precoAtualizado = [];
+        precoAtualizadoAtacado = [];
+        preco.innerHTML = `R$ 0.00`
+        desconto.innerHTML = `R$ 0.00`
+        qtdDesconto.innerHTML = ``
+    }
     
     // limparCampoMostrar() = quando essa função for chamada, ela sempre limpará o campo mostrar.
     function limparCampoMostrar(){
@@ -141,15 +144,13 @@ btnAtacado.addEventListener('click', ativarBotaoAtacado)
 
     function mostrarLista(){
         limparCampoMostrar();
-        // limparCampoQtd()
         calculoAtualizado()
     
         let somaSorvetesVarejo = somaTotalProdutos(precoAtualizado);
         let somaSorvetesAtacado = somaTotalProdutos(precoAtualizadoAtacado);
         
         lista.forEach((item, index)=>{  
-            let mult = item.quantityProduct * item.priceProduct      
-            let multAtacado = item.quantityProduct * item.priceWholeSaleProduct      
+    
 
             if(somaSorvetesVarejo < 40){
                 let formatado = `<li value="${index}" class="index-excluir">
