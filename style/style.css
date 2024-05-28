@@ -48,7 +48,7 @@ body{
 }
 
 .ativo{
-    display: grid;
+    display: grid !important;
     opacity: 1;
     transform: translateY(30px);
     transition: 0.1s;

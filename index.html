@@ -77,7 +77,7 @@
     <div class="btn-grupo">
         <button id="deletar" onclick="limparCampoBotao()" class="btn-acoes" >Deletar</button>
         <button id="limpar-fechamento" onclick="limparFechamento()" class="btn-acoes" >limpar Fechamento</button>
-        <button id="vendas-salvas" onclick="mostrarVendasSalvas()" class="btn-acoes" >VENDAS SALVAS</button>
+        <button id="vendas-salvas" onclick="findApiOrderSales()" class="btn-acoes" >VENDAS SALVAS</button>
         <button id="finalizar" onclick="finalizar()" class="btn-acoes">Finalizar</button>
     </div>
     <div id="qtd-desconto"></div>
@@ -112,9 +112,18 @@
             </button>
         </div>
     </div>
-    <div class="mostrar-vendas-salvas">
+    <div id="vendasSalvas">
+        <div class="cabecalho-vendas-salvas">
+          <p>ID</p>
+          <p>PRODUTOS</p>
+          <p>DATA</p>
+          <p>FORMA</p>
+        </div>
+        <ul class="mostrar-vendas-salvas">
+
+        </ul>
         <button id="cancelarVendasSalvas">
-            cancelar
+            x
         </button>
     </div>
 
@@ -124,5 +133,6 @@
     <script src="./js/produtoCalculo.js"></script>
     <script src="./js/finalizarVenda.js"></script>
     <script src="./js/enviarOrdemCompra.js"></script>
+    <script src="./js/puxarVendas.js"></script>
 </body>
 </html>

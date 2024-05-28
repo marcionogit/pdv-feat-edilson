@@ -12,14 +12,17 @@ async function findApi(idProduct) {
   const priceWholeSaleProduct = +product.wholesaleprice * +quantidade.value;
   let quantityProduct = +quantidade.value;
   
-  lista.push({nameProduct, priceProduct, priceWholeSaleProduct, quantityProduct})
-  descricaoProdutos.push(nameProduct + '\n');
-  precoAtualizado.push(priceProduct);
-  precoAtualizadoAtacado.push(priceWholeSaleProduct);
-  
   console.log(`Descrição: ${nameProduct}`);
   console.log(`Preço: ${priceProduct}`);
   console.log(`Preço Atacado: ${priceWholeSaleProduct}`);
+
+  lista.push({nameProduct, priceProduct, priceWholeSaleProduct, quantityProduct})
+  precoAtualizado.push(priceProduct);
+  precoAtualizadoAtacado.push(priceWholeSaleProduct);
+
+  let somaSorvetesVarejo = somaTotalProdutos(precoAtualizado);
+  descricaoProdutos.push(`${nameProduct} ${quantidade.value} x R$${(somaSorvetesVarejo <= 39 ? priceProduct : priceWholeSaleProduct).toFixed(2)}`);
+  
 
   quantidade.value = ''
   mostrarLista()

@@ -153,7 +153,7 @@ btnConfirmar.addEventListener('click', ()=>{
       }
 
       postOrderSale(
-        descricaoProdutos.toString(), 
+        descricaoProdutos.toString().replaceAll(',', ' \n'), 
         valorFinalizador, 
         funcaoFinalizadora,
       );

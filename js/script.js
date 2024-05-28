@@ -11,6 +11,7 @@ let quantidade = document.querySelector('#qtd');
 
 // // #mostrar =  campo para mostrar a descrição dos iténs que estão sendo selecionados.
 let mostrarHTML = document.querySelector('#mostrar');
+let vendasSalvas = document.querySelector('#vendasSalvas');
 
 // // #preco = campo onde será mostrado o total da compra.
 let preco = document.querySelector('#preco');
@@ -34,6 +35,8 @@ const mostrarTroco = document.querySelector('#mostrarTroco');
 
 // // #excluir-item = botão para excluir item unico durante uma compra.
 const botaoExcluir = document.querySelector('#excluir-item');
+
+const mostrarVendasSalvas = document.querySelector('.mostrar-vendas-salvas');
 
 
 
@@ -160,7 +163,10 @@ function limparCampoBotao(){
                 mostrarHTML.innerHTML += formatado;    
             } 
             else{
-                let formatado = `<li value="${index}" class="index-excluir" > ${item.nameProduct} ${precoAtualizadoAtacado[index].toFixed(2)} x ${item.quantityProduct} und. <strong>R$ ${item.priceWholeSaleProduct.toFixed(2)}</strong></li>` 
+                let formatado = `<li value="${index}" class="index-excluir">
+                                    <p> ${item.nameProduct} ${precoAtualizadoAtacado[index].toFixed(2)} x ${item.quantityProduct} und.</p>
+                                    <p><strong>R$ ${item.priceWholeSaleProduct.toFixed(2)}</strong></p>
+                                </li>` 
                 mostrarHTML.innerHTML += formatado; 
 
                 qtdDesconto.innerHTML = `DE:${somaSorvetesVarejo.toFixed(2)} POR:R$${somaSorvetesAtacado.toFixed(2)} `

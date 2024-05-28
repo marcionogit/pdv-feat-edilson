@@ -29,12 +29,62 @@
   border-bottom: 1px solid black;
 }
 
-.mostrar-vendas-salvas{
-  background-color: #fff;
-  opacity: 0;
-}
-
 .index-excluir{
   display: flex;
   justify-content: space-between;
 }
+
+
+#vendasSalvas{
+
+  height: 400px;
+  width: 95%;
+  overflow: auto;
+  position: absolute;
+  top: 25%;
+
+  display: none;
+  border-radius: 10px;
+}
+
+.cabecalho-vendas-salvas {
+  background-color: #7c7c7c;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 60px 1fr 100px 100px;
+  padding: 10px ;
+}
+
+.mostrar-vendas-salvas{
+  background-color: #fff;
+}
+.mostrar-vendas-salvas li{
+  display: grid;
+  grid-template-columns: 60px 1fr 110px 110px;
+}
+
+
+  .mostrar-vendas-salvas li textarea{
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 1px 6px;
+    overflow: hidden;
+    resize: vertical;
+    min-height: 70px;
+    line-height: 20px;
+    
+    color: gray;
+  }
+  .mostrar-vendas-salvas li textarea[contenteditable]:empty::before {
+    content: "Placeholder still possible";
+    color: gray;
+  }
+
+  #cancelarVendasSalvas{
+    position: absolute;
+    right: 0;
+    padding: 10px;
+    color: red;
+  }
+  
