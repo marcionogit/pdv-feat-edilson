@@ -1,13 +1,16 @@
 const deleteVenda = document.querySelector('#deleteVenda');
 
-function deleteOrderSale(value){
+async function deleteOrderSale(value){
 
-  fetch(`http://localhost:8080/orders/${value}`, {
-    method: 'DELETE'
+  let response = await fetch(`http://localhost:8080/orders/${value}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8' 
+     }, 
   })
 
-  .then((response) => response.json())
-  .then((data) => console.log(data))
+  let product = await response.json()
+  console.log(product)
 }
 
 deleteVenda.addEventListener('click', ()=>{

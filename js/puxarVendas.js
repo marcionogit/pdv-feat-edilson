@@ -9,12 +9,17 @@ async function findApiOrderSales() {
   let product = await response.json();
 
   console.log(product)
-  product.forEach((item, i)=>{
-    console.log(`Item ${i}: ${item.product}`)
+  product.forEach((item)=>{
+    console.log(`${item.moment}`)
     let formatado = `<li>
-    <input type="number" placeholder="ID" disabled value="${i}" style="text-align:center;">
-    <textarea name="produto${i}" disabled>${item.product}</textarea>
+    <input type="number" placeholder="ID" disabled value="${item.id}" style="text-align:center;">
+
+    <textarea name="produto${item.id}" disabled>${item.product}</textarea>
+
+    <input type="text" placeholder="R$" disabled value="${item.total.toFixed(2)}" style="text-align:center;">
+
     <input type="text" placeholder="DATA" disabled value="${item.moment}" style="text-align:center;">
+    
     <input type="text" placeholder="FORMA PGT" disabled value="${item.payment}" style="text-align:center;">
     </li>`   
     mostrarVendasSalvas.innerHTML += formatado;
@@ -37,12 +42,17 @@ async function findApiOrderSalesId(value) {
   let response = await fetch(`http://localhost:8080/orders/${value}`);
   let product = await response.json();
   
-  console.log(product)
+  console.log(product.moment)
 
     let formatado = `<li style="width:95%;">
     <input type="number" placeholder="ID" disabled value="${product.id}" style="text-align:center;">
+
     <textarea name="produto${product.id}" disabled>${product.product}</textarea>
+
+    <input type="text" placeholder="R$" disabled value="${product.total}" style="text-align:center;">
+
     <input type="text" placeholder="DATA" disabled value="${product.moment}" style="text-align:center;">
+
     <input type="text" placeholder="FORMA PGT" disabled value="${product.payment}" style="text-align:center;">
     </li>`   
     mostrarVendaId.innerHTML = formatado;
@@ -69,3 +79,6 @@ async function findApiOrderSalesId(value) {
     vendasSalvas.classList.remove('ativo', 'animacao');
     buscadorVenda.classList.add('ativo', 'animacao');
   }
+
+
+ 

@@ -48,7 +48,8 @@
 .cabecalho-vendas-salvas {
   color: #fff;
   display: grid;
-  grid-template-columns: 60px 1fr 100px 100px;
+  grid-template-columns: 60px 1fr 110px 110px 110px;
+
   padding: 10px ;
   border-radius: 10px 10px 0 0 ;
 }
@@ -63,7 +64,8 @@
 
 .mostrar-vendas-salvas li{
   display: grid;
-  grid-template-columns: 60px 1fr 110px 110px;
+  grid-template-columns: 60px 1fr 110px 110px 110px;
+
 }
 
 
@@ -94,7 +96,7 @@
   
   #mostrarVenda li{
     display: grid;
-    grid-template-columns: 60px 1fr 110px 110px;
+    grid-template-columns: 60px 1fr 110px 110px 110px;
   }
 
   #buscadorVenda{

@@ -182,7 +182,7 @@ btnConfirmar.addEventListener('click', ()=>{
         if(salvarPagamento.dinheiro > +somaSorvetesVarejo){
 
         let troco = salvarPagamento.dinheiro - +somaSorvetesVarejo
-        mostrarTroco.innerHTML =  `${troco.toFixed(2)}`
+        mostrarTroco.innerHTML =  `R$ ${troco.toFixed(2)}`
 
         postOrderSale(
             descricaoProdutos.toString().replaceAll(',', ' \n'), 

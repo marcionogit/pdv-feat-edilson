@@ -1,5 +1,11 @@
-function postOrderSale( product, total, payment){
+const dataAtual = new Date();
+let dateToday = dataAtual.toISOString().split('T')[0]; // Apenas a data no formato YYYY-MM-DD
 
+console.log(dateToday)
+
+
+function postOrderSale( product, total, payment){
+  
   fetch('http://localhost:8080/orders', {
     method: 'POST',
     headers: {
@@ -9,7 +15,7 @@ function postOrderSale( product, total, payment){
       product:product,
       total:total,
       payment:payment,
-      moment:'2024-05-27'
+      moment:dateToday
     })
   })
 
