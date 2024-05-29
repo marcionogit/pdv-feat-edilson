@@ -135,33 +135,67 @@ btnConfirmar.addEventListener('click', ()=>{
   console.log('Valor do finalizador:'+valorFinalizador)
   console.log('Valor da soma:'+somaSorvetesVarejo)
   if(+valorFinalizador === +somaSorvetesVarejo || +valorFinalizador === +somaSorvetesAtacado){
-
-    let funcaoFinalizadora;
+      let funcaoFinalizadora;
+      
       let salvarPagamento = {
           dinheiro: +valoresPagamento.dinheiro,
           debito: +valoresPagamento.debito,
           credito: +valoresPagamento.credito,
           itens: lista
-      }
+        }
 
-      if(salvarPagamento.dinheiro != 0){
-        funcaoFinalizadora = 'DINHEIRO';
-      } else if(salvarPagamento.debito){
-        funcaoFinalizadora = 'DEBITO';
-      } else{
+        if(salvarPagamento.dinheiro != 0){
+            funcaoFinalizadora = 'DINHEIRO';
+
+        } else if(salvarPagamento.debito){
+          funcaoFinalizadora = 'DEBITO';
+        } else{
         funcaoFinalizadora = 'CRÉDITO';
-      }
+        }
 
-      postOrderSale(
+    postOrderSale(
         descricaoProdutos.toString().replaceAll(',', ' \n'), 
         valorFinalizador, 
         funcaoFinalizadora,
       );
-      // salvarLocalStorage.push(salvarPagamento);   
-      // salvandoLocalStorage();
+      
       desativarModal();
       limparCampoBotao()
-  } else{
+    } else if(+valorFinalizador > +somaSorvetesVarejo || +valorFinalizador > +somaSorvetesAtacado){
+        let funcaoFinalizadora;   
+        let salvarPagamento = {
+            dinheiro: +valoresPagamento.dinheiro,
+            debito: +valoresPagamento.debito,
+            credito: +valoresPagamento.credito,
+            itens: lista
+        }
+
+        if(salvarPagamento.dinheiro != 0){
+            funcaoFinalizadora = 'DINHEIRO';
+
+        } else if(salvarPagamento.debito){
+          funcaoFinalizadora = 'DEBITO';
+        } else{
+        funcaoFinalizadora = 'CRÉDITO';
+        }
+
+        if(salvarPagamento.dinheiro > +somaSorvetesVarejo){
+
+        let troco = salvarPagamento.dinheiro - +somaSorvetesVarejo
+        mostrarTroco.innerHTML =  `${troco.toFixed(2)}`
+
+        postOrderSale(
+            descricaoProdutos.toString().replaceAll(',', ' \n'), 
+            somaSorvetesVarejo, 
+            funcaoFinalizadora,
+          );
+   
+        
+        desativarModal();
+        limparCampoBotao()
+    } 
+
+  }else{
       console.log('confirme o finalizador!')
       console.log(valorFinalizador)
       console.log(somaSorvetesAtacado)
@@ -180,5 +214,5 @@ function desativarModal(){
   valoresPagamento.dinheiro = +'';
   valoresPagamento.debito = +'';
   valoresPagamento.credito = +'';
-  mostrarTroco.innerHTML = `R$ 0.00`;
+//   mostrarTroco.innerHTML = `R$ 0.00`;
 }

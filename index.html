@@ -112,7 +112,7 @@
             </button>
         </div>
     </div>
-    <div id="vendasSalvas">
+    <div class="vendasSalvas">
         <div class="cabecalho-vendas-salvas">
           <p>ID</p>
           <p>PRODUTOS</p>
@@ -122,10 +122,32 @@
         <ul class="mostrar-vendas-salvas">
 
         </ul>
-        <button id="cancelarVendasSalvas">
+        <button class="cancelarVendasSalvas">
             x
         </button>
+        <button style="width: 100px; padding: 10px 20px; border-radius: 8px;" onclick="ativarClasslist()">APAGAR VENDA</button>
     </div>
+    
+    
+        <section class="cabecalho-vendas-salvas" id="buscadorVenda">
+            <label for="inputApagar" >N° da Venda:</label>
+            <input type="number" name="inputApagar" id="inputApagar" placeholder="ID">
+            <button id="buscarIdCompra">buscar</button>
+            <button class="remover" style="right: 20px; top:10px;">
+                x
+            </button>
+          <div style="grid-column: 1 / -1;" class="cabecalho-vendas-salvas">
+            <p>ID</p>
+            <p>ITEM</p>
+            <p>DATA</p>
+            <p>FORMA</p>
+        </div>
+        <ul id="mostrarVenda" class="mostrar-vendas-salvas" style="grid-column: 1 / -1; height: 76px;">
+        </ul>
+        <button  id="deleteVenda">APAGAR VENDA</button>
+    
+        </section>
+      
 
 
     <script src="./js/script.js"></script>
@@ -134,5 +156,6 @@
     <script src="./js/finalizarVenda.js"></script>
     <script src="./js/enviarOrdemCompra.js"></script>
     <script src="./js/puxarVendas.js"></script>
+    <script src="./js/deleteOrderSale.js"></script>
 </body>
 </html>

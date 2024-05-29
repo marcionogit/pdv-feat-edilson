@@ -11,7 +11,7 @@ let quantidade = document.querySelector('#qtd');
 
 // // #mostrar =  campo para mostrar a descrição dos iténs que estão sendo selecionados.
 let mostrarHTML = document.querySelector('#mostrar');
-let vendasSalvas = document.querySelector('#vendasSalvas');
+let vendasSalvas = document.querySelector('.vendasSalvas');
 
 // // #preco = campo onde será mostrado o total da compra.
 let preco = document.querySelector('#preco');
