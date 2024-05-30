@@ -1,13 +1,11 @@
 
-
-
 // Função acionada quando o botão for clicado
+
 function handleClick(event){
   // prevenindo o padrão de link para não carregar a página destino
   event.preventDefault();
   // pegando o caminho do da página para aseguir manipularmos as informações retornadas
-  fetchPagina(event.target.href)
-  
+  fetchPagina(event.target.href)  
 }
 
 // async faz com que a ação só seja executada quando ela for completamente carregada.
@@ -21,7 +19,6 @@ async function fetchPagina(url){
 }
 
 function mudarConteudo(novoTexto){
-
   const novoHtml = document.createElement('div');
   novoHtml.innerHTML = novoTexto;
 
@@ -29,7 +26,6 @@ function mudarConteudo(novoTexto){
   const conteudoNovo = novoHtml.querySelector('.picole-flex');
   
   conteudoAntigo.innerHTML = conteudoNovo.innerHTML;
-  
   
   const btnClicado = document.querySelectorAll('.btn-escolha')
   btnClicado.forEach((item)=>{
@@ -39,5 +35,4 @@ function mudarConteudo(novoTexto){
       findApi(idProduct)    
     })
   })
-
 }

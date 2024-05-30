@@ -1,11 +1,12 @@
+// dataAtual = metodo nativo para pagar data do sitema.
+
+// dateToday = irá transformar a dataAtual em string em um formato compativel com o banco de dados
+
 const dataAtual = new Date();
-let dateToday = dataAtual.toISOString().split('T')[0]; // Apenas a data no formato YYYY-MM-DD
+let dateToday = dataAtual.toISOString().split('T')[0];
 
-console.log(dateToday)
-
-
+// postOrderSale = pega as informações na hora de fechar a venda e manda para o banco de dados
 function postOrderSale( product, total, payment){
-  
   fetch('http://localhost:8080/orders', {
     method: 'POST',
     headers: {

@@ -69,11 +69,15 @@ finalizadorFocado.forEach((item)=>{
           
               
       item.addEventListener('keyup', (event)=>{
+
           if (event.key === 'Enter') {
               event.preventDefault();
+
               if(opcaoFinalizador === 'finalizadorDinheiro'){
                   valoresPagamento.dinheiro = item.value
+                  console.log(valoresPagamento.dinheiro)
                   item.value = valoresPagamento.dinheiro
+                  console.log(item.value)
               } else if(opcaoFinalizador === 'finalizadorDebito'){
                   valoresPagamento.debito = item.value
                   item.value = valoresPagamento.debito
@@ -117,23 +121,25 @@ finalizadorFocado.forEach((item)=>{
 
 // ativarModal() = sempre que o #btn-confirmar for clicado essa função será acionada
 function ativarModal(){
-  let somaSorvetesVarejo = somaTotalProdutos(precoAtualizado);
-  let somaSorvetesAtacado = somaTotalProdutos(precoAtualizadoAtacado);
 
-  
-  // Adicionando a class="ativo" no modal transformando seu display: none; => grid; ao CSS.
-  finalizadores.classList.add('ativo', 'animacao');
-  
+    
+    
+    // Adicionando a class="ativo" no modal transformando seu display: none; => grid; ao CSS.
+    finalizadores.classList.add('ativo', 'animacao');
+    
+    somaSorvetesVarejo = somaTotalProdutos(precoAtualizado);
+    somaSorvetesAtacado = somaTotalProdutos(precoAtualizadoAtacado);
   if(somaSorvetesVarejo < 40){
       somaSorvetesVarejo = somaSorvetesVarejo
   } else{
       somaSorvetesVarejo = somaSorvetesAtacado
   }
-
+  somaTotalProdutos(precoAtualizado);
+  somaTotalProdutos(precoAtualizadoAtacado);   
 btnConfirmar.addEventListener('click', ()=>{
   let valorFinalizador = +valoresPagamento.dinheiro + +valoresPagamento.debito + +valoresPagamento.credito;
-  console.log('Valor do finalizador:'+valorFinalizador)
-  console.log('Valor da soma:'+somaSorvetesVarejo)
+
+
   if(+valorFinalizador === +somaSorvetesVarejo || +valorFinalizador === +somaSorvetesAtacado){
       let funcaoFinalizadora;
       
@@ -152,55 +158,27 @@ btnConfirmar.addEventListener('click', ()=>{
         } else{
         funcaoFinalizadora = 'CRÉDITO';
         }
-
-    postOrderSale(
-        descricaoProdutos.toString().replaceAll(',', ' \n'), 
-        valorFinalizador, 
-        funcaoFinalizadora,
-      );
-      
-      desativarModal();
-      limparCampoBotao()
-    } else if(+valorFinalizador > +somaSorvetesVarejo || +valorFinalizador > +somaSorvetesAtacado){
-        let funcaoFinalizadora;   
-        let salvarPagamento = {
-            dinheiro: +valoresPagamento.dinheiro,
-            debito: +valoresPagamento.debito,
-            credito: +valoresPagamento.credito,
-            itens: lista
-        }
-
-        if(salvarPagamento.dinheiro != 0){
-            funcaoFinalizadora = 'DINHEIRO';
-
-        } else if(salvarPagamento.debito){
-          funcaoFinalizadora = 'DEBITO';
-        } else{
-        funcaoFinalizadora = 'CRÉDITO';
-        }
-
-        if(salvarPagamento.dinheiro > +somaSorvetesVarejo){
-
-        let troco = salvarPagamento.dinheiro - +somaSorvetesVarejo
-        mostrarTroco.innerHTML =  `R$ ${troco.toFixed(2)}`
-
+        console.log('Valor finalizador:' +valorFinalizador)
+        
         postOrderSale(
             descricaoProdutos.toString().replaceAll(',', ' \n'), 
-            somaSorvetesVarejo, 
+            valorFinalizador, 
             funcaoFinalizadora,
-          );
-   
-        
-        desativarModal();
-        limparCampoBotao()
-    } 
+      );
+      
+    
 
-  }else{
+      descricaoProdutos = []
+ 
+      desativarModal();
+      limparCampoBotao()
+    } else{
       console.log('confirme o finalizador!')
-      console.log(valorFinalizador)
-      console.log(somaSorvetesAtacado)
+      console.log('Valor Finalizador: '+valorFinalizador)
+      console.log('Varejo: ' +somaSorvetesVarejo)
+      console.log('Atacado: '+somaSorvetesAtacado)
   }
-  let salvarPagamento = {
+   salvarPagamento = {
       dinheiro: +'',
       debito: +'',
       credito: +'',
@@ -214,5 +192,6 @@ function desativarModal(){
   valoresPagamento.dinheiro = +'';
   valoresPagamento.debito = +'';
   valoresPagamento.credito = +'';
+
 //   mostrarTroco.innerHTML = `R$ 0.00`;
 }

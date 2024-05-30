@@ -6,9 +6,6 @@ let descricaoProdutos = []
 let precoAtualizado = []
 let precoAtualizadoAtacado = []
 
-// #qtd = campo input para multiplicao.
-let quantidade = document.querySelector('#qtd');
-
 // // #mostrar =  campo para mostrar a descrição dos iténs que estão sendo selecionados.
 let mostrarHTML = document.querySelector('#mostrar');
 let vendasSalvas = document.querySelector('.vendasSalvas');
@@ -112,7 +109,6 @@ function ativarBotaoAtacado(){
     }  
 }
 
-
 btnAtacado.addEventListener('click', ativarBotaoAtacado)
 
 function excluirItemLista(value){
@@ -121,13 +117,6 @@ function excluirItemLista(value){
     precoAtualizadoAtacado.splice(value, 1);
     mostrarLista();
 }
-
-
-// // limparCampoQtd() = quando essa função for chamada, ela sempre limpará o campo de input #qtd.
-// function limparCampoQtd(){
-//     quantidade.value = '';
-// }
-
 
 // // limparCampoBotao() = quando o botão Deletar for clicado, acionará essa função e sempre limpará os campos mostrar, preco e as arrays lista=[], e precoAtualizado.
 function limparCampoBotao(){
@@ -153,8 +142,6 @@ function limparCampoBotao(){
         let somaSorvetesAtacado = somaTotalProdutos(precoAtualizadoAtacado);
         
         lista.forEach((item, index)=>{  
-    
-
             if(somaSorvetesVarejo < 40){
                 let formatado = `<li value="${index}" class="index-excluir">
                                     <p> ${item.nameProduct} ${precoAtualizado[index].toFixed(2)} x ${item.quantityProduct} und.</p> 
@@ -173,7 +160,6 @@ function limparCampoBotao(){
             }
  
             let indexExcluir = document.querySelectorAll('.index-excluir');
-    
             
             indexExcluir.forEach((item)=>{
                 item.addEventListener('click', ()=>{
