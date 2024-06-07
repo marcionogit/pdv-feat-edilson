@@ -6,23 +6,26 @@
   <link rel="stylesheet" href="./style/style.css">
   <title>Document</title>
 </head>
-<body style="background-color: #727272;">
-  <div>
-    <section class="cabecalho-vendas-salvas" id="buscadorVenda">
-      <label for="inputApagar">N° da Venda:</label>
-      <input type="number" name="inputApagar" id="inputApagar" placeholder="ID">
-      <button id="buscarIdCompra">buscar</button>
-      <button disabled>APAGAR VENDA</button>
-      <ul >
-        <li class="cabecalho-vendas-salvas">
-          <p>ID</p>
-          <p>ITEM</p>
-          <p>DATA</p>
-          <p>FORMA</p>
-        </li>
-      </ul>
+<body style="background-color: #727272;" class="login">
 
-    </section>
-  </div>
+  <form action="http://localhost:8080/users" id="form" method="POST">
+    <label for="email">Email</label>
+    <input type="email" placeholder="username@email.com" id="email" >
+    <span class="error error-hidden" id="spanEmail">Email é obrigatório!</span>
+    
+    <label for="password">Senha</label>
+    <input type="password" placeholder="password" id="password" class="invali" >
+    <span class="error error-hidden" id="spanPassword">Senha incorreta!</span>
+
+    <button type="submit" class="button">Entrar</button>
+  </form>
+
+  <footer>
+    <p>
+    Todos os direitos reservados a Márcio César e Edilson Santiago ©
+  </p>
+  </footer>
+
+  <script src="./js/formValidate.js"></script>
 </body>
 </html>
